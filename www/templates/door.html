@@ -1,0 +1,93 @@
+<!--<ion-pane>-->
+<!--<ion-header-bar class="bar-positive">
+    <ion-nav-back-button class="button-clear">
+        <i class="ion-arrow-left-c"></i> Back
+    </ion-nav-back-button>
+    <h1 class="title">Intellidoor</h1>
+    <button class="button" ng-click="logout()">Log out</button>
+</ion-header-bar>-->
+<ion-view title="Configure Door">
+    <ion-nav-bar class="bar-positive">
+        <ion-nav-back-button class="button-clear">
+            <i class="ion-arrow-left-c"></i> Back
+        </ion-nav-back-button>
+    </ion-nav-bar>
+    <ion-content class="padding">
+        <ion-refresher on-refresh="pullToRefresh()"></ion-refresher>
+        <div class="list">
+            <div class="item item-divider">
+                Integrations in use: {{door.user_info_for_door.integrations.length}}
+            </div>
+
+            <ion-toggle ng-repeat="integration in door.user_info_for_door.integrations"
+                        ng-model="integration.active" ng-checked="integration.active" ng-click="saveIntegration($index, integration)">
+                {{ integration.name }}
+                <span style="text-align: right; position: absolute; right: 80px;">{{integration.active && 'on' || 'off'}}</span>
+            </ion-toggle>
+        </div>
+
+        <div class="list">
+            <div class="item item-divider">
+                Integrations available: {{availableIntegrations.length}}
+            </div>
+
+            <div class="item item-button-right" ng-repeat="integration in availableIntegrations">
+                {{integration.name}}
+                <button class="button button-balanced" ng-click="alterIntegration(integration.name)" ng-if="!integration.selected">
+                    <i class="icon ion-android-add"></i>
+                </button>
+
+                <button class="button button-assertive" ng-click="alterIntegration(integration.name)" ng-if="integration.selected">
+                    <i class="icon ion-android-remove"></i>
+                </button>
+
+            </div>
+        </div>
+        <!--<div class="card">
+            <div class="item item-divider">Door - {{door.custom_name}} <i>(Location: {{door.location}})</i></div>
+            <div class="item item-body">
+
+            </div>
+        </div>
+        <div class="card">
+            <div class="item item-divider">Integrations</div>
+            <div class="item item-body">
+                <ul class="list">
+                    <li class="item item-toggle" ng-repeat="integration in door.user_info_for_door.integrations">
+                        <ion-toggle ng-model="integration.active" ng-checked="integration.active">
+                            {{ integration.name }}
+                        </ion-toggle>
+                    </li>
+                </ul>
+                <div class="item">
+                    <button class="button button-block button-balanced" ng-click="saveIntegrations()">
+                        Save
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="item item-divider">Add Integration</div>
+            <div class="item item-body">
+                <ul class="list">
+                    <li class="item" ng-repeat="integration in availableIntegrations">
+                        <div class="item item-button-right">
+                            {{integration}}
+                            <button class="button button-positive" ng-click="alterIntegration(integration)">
+                                Add
+                            </button>
+                        </div>
+                    </li>
+                </ul>
+                <div class="item">
+                    <button class="button button-block button-balanced" ng-click="saveNewIntegration()">
+                        Save
+                    </button>
+                </div>
+            </div>
+        </div>-->
+    </ion-content>
+</ion-view>
+<!--
+</ion-pane>
+-->

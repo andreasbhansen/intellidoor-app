@@ -1,0 +1,22 @@
+<ion-header-bar class="bar-positive">
+    <h1 class="title">Intellidoor</h1>
+</ion-header-bar>
+<ion-view view-title="Sign-In">
+    <ion-content>
+        <div class="list">
+            <label class="item item-input">
+                <span class="input-label">Username</span>
+                <input type="text" ng-model="user.username">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Password</span>
+                <input type="password" ng-model="user.password">
+            </label>
+        </div>
+        <div class="padding">
+            <button class="button button-block button-balanced" ng-click="signIn(user)">
+                Sign-In
+            </button>
+        </div>
+    </ion-content>
+</ion-view>

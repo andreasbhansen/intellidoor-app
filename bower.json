@@ -1,0 +1,10 @@
+{
+  "name": "Intellidoor",
+  "private": "true",
+  "devDependencies": {
+    "ionic": "driftyco/ionic-bower#1.0.0-rc.4"
+  },
+  "dependencies": {
+    "lodash": "~3.8.0"
+  }
+}

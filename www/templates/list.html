@@ -1,0 +1,29 @@
+<ion-view title="Add door">
+    <ion-nav-bar class="bar-positive">
+        <ion-nav-back-button class="button-clear">
+            <i class="ion-arrow-left-c"></i> Back
+        </ion-nav-back-button>
+    </ion-nav-bar>
+    <ion-content class="padding">
+        <div class="item item-input-inset">
+            <label class="item item-input">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="text" ng-model="user.email" placeholder="Search for user's email">
+            </label>
+            <button class="button button-medium" ng-click="searchForDoors(user)">
+                Submit
+            </button>
+        </div>
+        <ul class="list">
+            <li class="item" ng-repeat="door in listData">
+                <a class="item item-icon-left" href="#">
+                    <i class="icon ion-android-home"></i>
+                    {{door.custom_name}}
+                    <span class="item-note">
+                      @{{door.location}} (ss)
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </ion-content>
+</ion-view>
