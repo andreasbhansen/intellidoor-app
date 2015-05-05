@@ -1,5 +1,45 @@
 <!--<ion-pane>-->
-<ion-header-bar class="bar-positive">
+
+<ion-view title="Intellidoor">
+    <md-content>
+        <md-toolbar class="md-warn md-hue-1 md-default-theme">
+            <div class="md-toolbar-tools">
+                <h2>
+                    <span style="color: #fff;">Intellidoor</span>
+                </h2>
+                <span flex></span>
+                <md-button class="md-icon-button" aria-label="More" ng-click="signOut()">
+                    <!--<md-icon md-svg-icon="../img/logout.svg"></md-icon>-->
+                    <span class="icon-logout" style="font-size: 1.8em; position: relative; top: 6px !important;"></span>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <!-- Doors available for user -->
+        <md-list>
+            <md-subheader class="md-no-sticky">Doors I can access: {{listData.length}}
+            </md-subheader>
+            <md-list-item class="md-2-line" ng-repeat="door in listData">
+
+                <span class="icon-home" style="font-size: 1.8em; position: relative; top: 20px !important;"></span>
+
+                <!-- ui-sref="door({_id: door._id})"-->
+                <div style="margin-left: 15px;" class="md-list-item-text" ng-class="{'md-offset': $index != 0 }" ui-sref="door({_id: door._id})">
+                    <h3> {{door.custom_name}} </h3>
+
+                    <p ng-if="door.is_door_owner"> @{{door.location}} (door owner) </p>
+
+                    <p ng-if="!door.is_door_owner"> @{{door.location}} (not door owner) </p>
+                </div>
+
+            </md-list-item>
+        </md-list>
+        <md-divider></md-divider>
+    </md-content>
+</ion-view>
+
+
+<!--<ion-header-bar class="bar-positive">
     <h1 class="title">Intellidoor</h1>
     <button class="button" ng-click="logout()">Log out</button>
 </ion-header-bar>
@@ -50,7 +90,7 @@
             </div>
         </div>
     </ion-content>
-</ion-view>
+</ion-view>-->
 <!--
 </ion-pane>
 -->

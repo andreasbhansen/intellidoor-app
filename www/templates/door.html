@@ -1,93 +1,50 @@
-<!--<ion-pane>-->
-<!--<ion-header-bar class="bar-positive">
-    <ion-nav-back-button class="button-clear">
-        <i class="ion-arrow-left-c"></i> Back
-    </ion-nav-back-button>
-    <h1 class="title">Intellidoor</h1>
-    <button class="button" ng-click="logout()">Log out</button>
-</ion-header-bar>-->
 <ion-view title="Configure Door">
-    <ion-nav-bar class="bar-positive">
-        <ion-nav-back-button class="button-clear">
-            <i class="ion-arrow-left-c"></i> Back
-        </ion-nav-back-button>
-    </ion-nav-bar>
-    <ion-content class="padding">
-        <ion-refresher on-refresh="pullToRefresh()"></ion-refresher>
-        <div class="list">
-            <div class="item item-divider">
-                Integrations in use: {{door.user_info_for_door.integrations.length}}
+    <md-content>
+        <md-toolbar class="md-warn md-hue-1 md-default-theme">
+            <div class="md-toolbar-tools">
+                <md-button class="md-icon-button" aria-label="Go back" ng-click="goBack();">
+                    <span class="icon-back" style="font-size: 1.8em; position: relative; top: 6px !important;"></span>
+                </md-button>
+                <h2>
+                    <span style="color: #fff;">Door Configuration</span>
+                </h2>
+                <span flex></span>
+                <md-button class="md-icon-button" aria-label="Refresh" ng-click="refresh()">
+                    <span class="icon-refresh" style="font-size: 2.3em; position: relative; top: 6px !important;"></span>
+                </md-button>
             </div>
+        </md-toolbar>
 
-            <ion-toggle ng-repeat="integration in door.user_info_for_door.integrations"
-                        ng-model="integration.active" ng-checked="integration.active" ng-click="saveIntegration($index, integration)">
-                {{ integration.name }}
-                <span style="text-align: right; position: absolute; right: 80px;">{{integration.active && 'on' || 'off'}}</span>
-            </ion-toggle>
-        </div>
+        <!-- User's current integrations -->
+        <md-list>
+            <md-subheader class="md-no-sticky">Integrations in use: {{door.user_info_for_door.integrations.length}}
+            </md-subheader>
+            <md-list-item ng-repeat="integration in door.user_info_for_door.integrations">
+                <p> {{ integration.name }} </p>
+                <span style="margin-right: 4em;">{{integration.active && 'on' || 'off'}}</span>
+                <md-switch class="" ng-model="integration.active"
+                           ng-click="saveIntegration($index, integration)" aria-label="Toggle integration">
 
-        <div class="list">
-            <div class="item item-divider">
-                Integrations available: {{availableIntegrations.length}}
-            </div>
+                </md-switch>
+            </md-list-item>
+        </md-list>
+        <md-divider></md-divider>
 
-            <div class="item item-button-right" ng-repeat="integration in availableIntegrations">
-                {{integration.name}}
-                <button class="button button-balanced" ng-click="alterIntegration(integration.name)" ng-if="!integration.selected">
-                    <i class="icon ion-android-add"></i>
-                </button>
+        <!-- Available integrations user has not used-->
+        <md-list>
+            <md-subheader class="md-no-sticky">Integrations available: {{availableIntegrations.length}}
+            </md-subheader>
+            <md-list-item ng-repeat="integration in availableIntegrations">
+                <p> {{ integration.name }} </p>
+                <md-button class="md-fab md-primary md-mini md-hue-1" aria-label="Add integration"
+                           ng-click="alterIntegration(integration.name)">
+                    <span class="icon-plus" style="font-size: 2.3em; position: relative; top: 4px; right: 2px;"></span>
+                </md-button>
 
-                <button class="button button-assertive" ng-click="alterIntegration(integration.name)" ng-if="integration.selected">
-                    <i class="icon ion-android-remove"></i>
-                </button>
+                </md-switch>
+            </md-list-item>
+        </md-list>
+        <md-divider></md-divider>
 
-            </div>
-        </div>
-        <!--<div class="card">
-            <div class="item item-divider">Door - {{door.custom_name}} <i>(Location: {{door.location}})</i></div>
-            <div class="item item-body">
-
-            </div>
-        </div>
-        <div class="card">
-            <div class="item item-divider">Integrations</div>
-            <div class="item item-body">
-                <ul class="list">
-                    <li class="item item-toggle" ng-repeat="integration in door.user_info_for_door.integrations">
-                        <ion-toggle ng-model="integration.active" ng-checked="integration.active">
-                            {{ integration.name }}
-                        </ion-toggle>
-                    </li>
-                </ul>
-                <div class="item">
-                    <button class="button button-block button-balanced" ng-click="saveIntegrations()">
-                        Save
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="item item-divider">Add Integration</div>
-            <div class="item item-body">
-                <ul class="list">
-                    <li class="item" ng-repeat="integration in availableIntegrations">
-                        <div class="item item-button-right">
-                            {{integration}}
-                            <button class="button button-positive" ng-click="alterIntegration(integration)">
-                                Add
-                            </button>
-                        </div>
-                    </li>
-                </ul>
-                <div class="item">
-                    <button class="button button-block button-balanced" ng-click="saveNewIntegration()">
-                        Save
-                    </button>
-                </div>
-            </div>
-        </div>-->
-    </ion-content>
+    </md-content>
 </ion-view>
-<!--
-</ion-pane>
--->
